@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include "book.h"
 
 int main() {
@@ -7,12 +8,13 @@ int main() {
      * Пользователь вводит кол-во книг с клавиатуры
      * Затем программа предлагает ввести название, автора и кол-во страниц каждой книги
      *
+     *
      */
 
     int number;
     std::cout << "Enter number of books\n";
     std::cin >> number;
-    Book* book = new Book[number]();
+    Book* books = new Book[number]();
 
     for (int i = 0; i < number; i++){
         std::string title;
@@ -26,17 +28,21 @@ int main() {
         std::cout << "Enter number of pages\n";
         std::cin >> pages;
 
-       book[i].setTitle(title);
-       book[i].setAuthor(author);
-       book[i].setPages(pages);
+       books[i].setTitle(title);
+       books[i].setAuthor(author);
+       books[i].setPages(pages);
     }
+
+    std::sort(books, books + number, compare_by_title);
 
     for(int i = 0; i < number; i++){
         std::cout << i << " "
-        + book[i].getTitle() + " "
-        + book[i].getAuthor() + " "
-        << book[i].getPages() << "\n";
+        + books[i].getTitle() + " "
+        + books[i].getAuthor() + " "
+        << books[i].getPages() << "\n";
     }
+
+
 
 //    // class-style создание объекта
 //    Book book1("Atlas shruggled", "A. Ryend", 1000);

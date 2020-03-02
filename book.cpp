@@ -58,5 +58,7 @@ void Book::setPages(int pages) {
 }
 
 
-
+bool compare_by_title(Book &book1, Book &book2){
+    return book1.getTitle() < book2.getTitle();
+}
 
