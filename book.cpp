@@ -57,8 +57,15 @@ void Book::setPages(int pages) {
 
 }
 
+void Book::printBook(){
+std::cout << getTitle() << std::endl << getAuthor() << std::endl << getPages() << std::endl;
+}
 
 bool compare_by_title(Book &book1, Book &book2){
     return book1.getTitle() < book2.getTitle();
 }
+
+
+
+
 

@@ -17,12 +17,16 @@ public:
 
     Book(std::string title, std::string author, int pages);
     Book(){};
+    
     int getPages();
     int getMark();
+    
     void setMark(int mark);
     void setTitle(std::string title);
     void setAuthor(std::string author);
     void setPages(int pages);
+    void printBook();
+    
     std::string getTitle();
     std::string getAuthor();
     ~Book();
@@ -31,5 +35,6 @@ public:
 };
 
 bool compare_by_title(Book &book1, Book &book2);
+
 
 #endif //LAB1_BOOK_H
