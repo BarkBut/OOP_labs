@@ -57,6 +57,9 @@ void Book::setPages(int pages) {
 
 }
 
-
+void Book::printBook();
+{
+	std::cout << getTitle() << endl << getAuthor << endl << getPages << endl;
+}
 
 
