@@ -1,40 +1,54 @@
-//
-// Created by k3l on 21.02.2020.
-//
-
 #ifndef LAB1_BOOK_H
 #define LAB1_BOOK_H
 
 #include <iostream>
 
+// Это заголовочный файл. Здесь находится обьявление (перечисление) полей и методов класса Книга аka Book
+
+
 class Book {
-    std::string title;
-    std::string author;
-    int pages;
-    int mark;
+    std::string title;              // поля класса Книга: название,
+    std::string author;            // автор,
+    unsigned int pages;           // количество страниц,
+    unsigned int mark;           // номер страницы, которая помечена закладкой :)
 
 public:
 
-    Book(std::string title, std::string author, int pages);
-    Book(){};
-    
-    int getPages();
-    int getMark();
-    
-    void setMark(int mark);
-    void setTitle(std::string title);
-    void setAuthor(std::string author);
-    void setPages(int pages);
-    void printBook();
-    
-    std::string getTitle();
-    std::string getAuthor();
-    ~Book();
+    Book(std::string title, std::string author, unsigned int pages);   // конструктор, создает книгу с заданными полями
+    Book() : pages(0), mark(0) {};                                     // конструктор по умолчанию, создает пустую книгу
+
+    unsigned int getPages();                  // этот метод возвращает количество страниц заданной книги
+    unsigned int getMark();                  // этот метод возвращает страницу закладки заданной книги
+    std::string getTitle();                 // этот метод возвращает название заданной книги
+    std::string getAuthor();               // этот метод возвращает автора заданной книги
+
+    void setMark(unsigned int mark);            // этот метод устанавливает закладку на заданной странице
+    void setTitle(std::string title);          // этот метод добавляет книге название
+    void setAuthor(std::string author);       // этот метод добавляет книге автора
+    void setPages(unsigned int pages);       // этот метод устанавливает количество страниц
+    void writeBook();                       // этот метод выводит книгу
+
+    /*
+     * это переопределение оператора сравнения
+     * когда мы пишем а == b
+     * на самом деле происходит
+     * вызов специальной функции от левого операнда а
+     * которая в качестве параметра принимает правый операнд b
+     * a.operator==(b)
+     * эта функция возвращает true если а = b
+     * но сравнивать Книги программа не умеет, сравнение "==" работает только с встроенными типами
+     * (числа, строки и т д)
+     * для книг надо определить сравнение отдельно
+     *
+     * слова const запрещают менять значения которыми мы оперируем
+     *
+     * rhs это правый операнд
+     */
+    bool operator==(const Book &rhs) const;
+
+    ~Book();                           // деструктор -- удаляет заданную книгу
 
 
 };
 
-bool compare_by_title(Book &book1, Book &book2);
-
-
-#endif //LAB1_BOOK_H
+#endif
