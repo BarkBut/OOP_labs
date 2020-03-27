@@ -4,10 +4,11 @@
 #include <vector>
 #include "printBook.h"
 
+#define DEFAULT_SIZE 20 // максимальное колво книг на полке по умолчанию, если не указано иное
+
 // Это заголовочный файл. Здесь находится обьявление (перечисление) полей и методов класса Полка aka Shelf
 
 class Shelf {
-    unsigned int shelf_number;               // порядковый номер полки
     unsigned int shelf_size;                // максимальное колво книг на полке
     std::vector<PrintBook> books_list;     // список самих книг
 
@@ -18,6 +19,7 @@ class Shelf {
      * на самом деле это обычный массив,
      * просто добавление элементов и многое другое уже реализовано за нас
      * в библиотеке vector
+     * сначала я использовала список, но потом пришлось все переделать т к было неудобно :(
      */
 
 public:
@@ -35,23 +37,23 @@ public:
      * тогда будет нельзя создать элемент класса с пустыми полями
      */
 
-    explicit Shelf(unsigned int shelf_number = 0, unsigned int shelf_size = 0);
+    explicit Shelf(unsigned int shelf_size = DEFAULT_SIZE);
 
-    unsigned int getNumber();             // этот метод возвращает номер заданной полки
-    unsigned int getSize();             // этот метод возвращает размер заданной полки
+    unsigned int capacitySize();    // этот метод возвращает размер заданной полки
+    unsigned int getSize();        // этот метод возвращает количество книг на полке
 
-    bool findBook(std::string title, std::string author);  // проверяет, есть ли эта книга на заданной полке
+    bool findBook(std::string title, std::string author);   // проверяет, есть ли эта книга на заданной полке
 
-    int getPlace(PrintBook gbook);      // этот метод возвращает место книги на полке
+    int getPlace(std::string title, std::string author);  // этот метод возвращает место книги на полке
 
-    PrintBook getBook(std::string title, std::string author);  // этот метод возвращает книгу по названию и автору
-    PrintBook getBook(unsigned int place);                    // этот метод возвращает книгу по месту на полке
+    PrintBook & getBook(std::string title, std::string author);  // этот метод возвращает книгу по названию и автору
+    PrintBook & getBook(unsigned int place);                    // этот метод возвращает книгу по месту на полке
 
-    void setNumber(unsigned int number);        // этот метод присваивает полке номер
     void setSize(unsigned int size);           // этот метод присваивает полке размер
     void addBook(PrintBook abook);            // этот метод добавляет книгу на полку
-    void putBook(PrintBook afterbook, PrintBook putbook);  // этот метод ставит книгу после заданной книги
-    void removeBook(unsigned int rbook_place);       // этот метод убирает книгу с полки
+    void putBook(PrintBook afterbook, PrintBook putbook);     // этот метод ставит книгу после заданной книги
+    void removeBook(std::string title, std::string author);  // этот метод убирает книгу с полки
+    void removeBook(unsigned int place);
     void writeShelf();                     // этот метод выводит содержимое полки
 
     ~Shelf();                            // деструктор -- удаляет всю полку
