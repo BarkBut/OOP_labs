@@ -19,8 +19,8 @@ class Book {
 
 public:
 
-    Book(std::string title, std::string author, unsigned int pages);   // конструктор, создает книгу с заданными полями
-    Book() : pages(0), mark(0) {};                                    // конструктор по умолчанию, создает пустую книгу
+    Book(std::string title, std::string author, unsigned int pages);  // конструктор, создает книгу с заданными полями
+    Book() : pages(0), mark(0) {};                                   // конструктор по умолчанию, создает пустую книгу
 
     unsigned int getPages();                  // этот метод возвращает количество страниц заданной книги
     unsigned int getMark();                  // этот метод возвращает страницу закладки заданной книги

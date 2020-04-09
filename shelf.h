@@ -46,10 +46,16 @@ public:
 
     int getPlace(std::string title, std::string author);  // этот метод возвращает место книги на полке
 
-    PrintBook & getBook(std::string title, std::string author);  // этот метод возвращает книгу по названию и автору
-    PrintBook & getBook(unsigned int place);                    // этот метод возвращает книгу по месту на полке
+    /*
+     * следующие методы возвращают ссылку & на объект
+     * это означает, что результатом работы метода
+     * будет именно объект, который можно менять,
+     * а не копия его значения
+     */
 
-    void setSize(unsigned int size);           // этот метод присваивает полке размер
+    PrintBook & getBook(std::string title, std::string author); // этот метод возвращает книгу по названию и автору
+    PrintBook & getBook(unsigned int place);                   // этот метод возвращает книгу по месту на полке
+
     void addBook(PrintBook abook);            // этот метод добавляет книгу на полку
     void putBook(PrintBook afterbook, PrintBook putbook);     // этот метод ставит книгу после заданной книги
     void removeBook(std::string title, std::string author);  // этот метод убирает книгу с полки

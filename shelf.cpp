@@ -12,11 +12,6 @@
 Shelf::Shelf(unsigned int shelf_size) : shelf_size(shelf_size) {}
 
 
-void Shelf::setSize(unsigned int size) {      // этот метод присваивает полке размер
-    this->shelf_size = size;
-}
-
-
 void Shelf::addBook(PrintBook new_book) {           // этот метод добавляет книгу на полку
     if (books_list.size() < this->shelf_size) {    // проверка того, что количество книг на полке меньше размера полки
         this->books_list.push_back(new_book);     // push back добавляет элемент в конец вектора
@@ -119,7 +114,8 @@ PrintBook & Shelf::getBook(std::string title, std::string author) { // эта ф
             return booki;
         }
     }
-    throw std::domain_error("Книга с названием " + title + " и автором " + author + " не найдена\n"); // если книги нет, используем исключение
+    // если книги нет, используем исключение
+    throw std::domain_error("Книга с названием " + title + " и автором " + author + " не найдена\n");
 }
 
 /*

@@ -53,7 +53,7 @@ void Bookshelf::addBook(unsigned int shelf_number, PrintBook abook) { // гов�
 
 
 void Bookshelf::putBook(unsigned int shelf_number, PrintBook afterbook, PrintBook putbook) { // говорит полке
-    shelves[shelf_number].putBook(afterbook, putbook);                             // добавить книгу на конкретное место
+    shelves[shelf_number].putBook(afterbook, putbook);                           // добавить книгу на конкретное место
 }
 
 
